@@ -12,29 +12,35 @@ input.onButtonPressed(Button.A, function () {
     } else {
         if (input.temperature() > 26.66 && input.temperature() < 32.22) {
             basic.showIcon(IconNames.Happy)
-        }
-        if (input.temperature() > -1.11 && input.temperature() < 26.66 || input.temperature() < 32.22 && input.temperature() < 43.33) {
-            basic.showIcon(IconNames.Yes)
-        }
-        if (input.temperature() < -1.11) {
-            basic.showString("too cold")
-            basic.showLeds(`
-                # . # . #
-                . # # # .
-                # # # # #
-                . # # # .
-                # . # . #
-                `)
-        }
-        if (input.temperature() > 43.33) {
-            basic.showString("too hot")
-            basic.showLeds(`
-                . . # . .
-                . . # . .
-                . . # . .
-                . . . . .
-                . . # . .
-                `)
+        } else {
+            if (input.temperature() < -1.11) {
+                basic.showString("too cold")
+                basic.showLeds(`
+                    # . # . #
+                    . # # # .
+                    # # # # #
+                    . # # # .
+                    # . # . #
+                    `)
+            } else {
+                if (input.temperature() > -1.11 && input.temperature() < 26.66 || input.temperature() < 32.22 && input.temperature() < 43.33) {
+                    basic.showIcon(IconNames.Yes)
+                }
+            }
+            if (input.temperature() > 43.33) {
+                basic.showString("too hot")
+                basic.showLeds(`
+                    . . # . .
+                    . . # . .
+                    . . # . .
+                    . . . . .
+                    . . # . .
+                    `)
+            } else {
+                if (input.temperature() > -1.11 && input.temperature() < 26.66 || input.temperature() < 32.22 && input.temperature() < 43.33) {
+                    basic.showIcon(IconNames.Yes)
+                }
+            }
         }
     }
 })
